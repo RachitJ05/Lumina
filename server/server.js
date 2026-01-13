@@ -12,7 +12,7 @@ await connectCloudinary();
 
 app.use(cors(
   {
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://lumina-zeta-one.vercel.app/"],
     methods: ["GET", "POST", "PUT", "DELETE"]
   }
 ));
