@@ -4,13 +4,5 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://lumina-r0a9.onrender.com/",
-        changeOrigin: true,
-      },
-    },
-  },
+  plugins: [react(), tailwindcss()]
 });
