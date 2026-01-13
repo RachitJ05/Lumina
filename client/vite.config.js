@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: import.meta.env.VITE_BASE_URL,
+        target: "https://lumina-r0a9.onrender.com/",
         changeOrigin: true,
       },
     },
