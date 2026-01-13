@@ -6,7 +6,7 @@ Lumina is a full-stack AI-powered web application that combines multiple creativ
 
 ## 🌐 Live Demo
 
-🔗 [https://quick-ai-gray-eight.vercel.app/](https://lumina-zeta-one.vercel.app/)
+🔗 https://lumina-zeta-one.vercel.app/
 
 ---
 
