@@ -9,7 +9,7 @@ import { useUser } from "@clerk/clerk-react";
 
 
 
-// axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const WriteArticle = () => {
 
