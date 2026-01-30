@@ -93,8 +93,8 @@ LUMINA/
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/QuickAI.git
-cd QuickAI
+git clone https://github.com/RachitJ05/Lumina.git
+cd Lumina
 ```
 
 ```bash
