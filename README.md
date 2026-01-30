@@ -64,8 +64,8 @@ LUMINA/
 │   ├── src/
 │   │   ├── components
 │   │   ├── pages
-│   │   ├── assets
-│   │   └── utils
+│   │   └── assets
+│   │  
 │
 ├── server/       # Express backend
 │   ├── configs
