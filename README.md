@@ -10,6 +10,10 @@ Lumina is a full-stack AI-powered web application that combines multiple creativ
 
 ---
 
+![Landing Page](client/public/ScreenshotL1_README.png)
+![Dashboard](client/public/ScreenshotL2_README.png)
+![Community](client/public/ScreenshotL3_README.png)
+
 ## 📌 Features
 
 ### 🤖 AI Tools
