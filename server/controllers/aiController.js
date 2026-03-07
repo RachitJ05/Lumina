@@ -5,26 +5,29 @@ import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
 import pdf from "pdf-parse/lib/pdf-parse.js";
 
-const client = new OpenAI();
+const client = new OpenAI({
+  baseURL: "https://api.groq.com/openai/v1",
+  apiKey: process.env.GROQ_API_KEY
+});
 
 export const generateArticle = async (req, res) => {
   try {
     const { userId } = req.auth();
     const { prompt, length } = req.body;
 
-    const response = await client.responses.create({
-      model: "gpt-4.1-mini",
-      input: [
+    const response = await client.chat.completions.create({
+      model: "llama-3.1-8b-instant",
+      messages: [
         {
           role: "user",
-          content: prompt,
-        },
+          content: prompt
+        }
       ],
       temperature: 0.7,
-      max_output_tokens: length,
+      max_tokens: length
     });
 
-    const content = response.output[0].content[0].text;
+    const content = response.choices[0].message.content;
 
     await sql` INSERT INTO creations (user_id, prompt, content, type) VALUES (${userId}, ${prompt}, ${content}, 'article') `;
 
@@ -40,19 +43,19 @@ export const generateBlogTitle = async (req, res) => {
     const { userId } = req.auth();
     const { prompt } = req.body;
 
-    const response = await client.responses.create({
-      model: "gpt-4.1-mini",
-      input: [
+    const response = await client.chat.completions.create({
+      model: "llama-3.1-8b-instant",
+      messages: [
         {
           role: "user",
-          content: prompt,
-        },
+          content: prompt
+        }
       ],
       temperature: 0.7,
-      max_output_tokens: 100,
+      max_tokens: 100
     });
 
-    const content = response.output[0].content[0].text;
+    const content = response.choices[0].message.content;
 
     await sql` INSERT INTO creations (user_id, prompt, content, type) VALUES (${userId}, ${prompt}, ${content}, 'blog-title') `;
 
@@ -159,19 +162,19 @@ export const resumeReview = async (req, res) => {
 
     const prompt = `Review the following resume and provide constructive feedback on its strengths, weaknesses, and areas for improvement. Resume Content:\n\n${pdfData.text}`;
 
-    const response = await client.responses.create({
-      model: "gpt-4.1-mini",
-      input: [
+    const response = await client.chat.completions.create({
+      model: "llama-3.1-8b-instant",
+      messages: [
         {
           role: "user",
-          content: prompt,
-        },
+          content: prompt
+        }
       ],
       temperature: 0.7,
-      max_output_tokens: 1000,
+      max_tokens: 1000
     });
 
-    const content = response.output[0].content[0].text;
+    const content = response.choices[0].message.content;
 
     await sql` INSERT INTO creations (user_id, prompt, content, type) VALUES (${userId}, 'Review the uploaded resume', ${content}, 'resume-review') `;
 
